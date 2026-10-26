@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Declaración de tu mapa del sitio (Sitemap)
+Sitemap: https://360digital.netlify.app/sitemap.xml

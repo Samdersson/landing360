@@ -1,3 +1,31 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Rastrear clics hacia WhatsApp en Google Analytics
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+    whatsappLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_whatsapp', {
+                    'event_category': 'Conversión',
+                    'event_label': 'Contacto WhatsApp'
+                });
+            }
+        });
+    });
+
+    // Registrar apertura de modales como interacción
+    const cards = document.querySelectorAll('.pill-card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'abrir_modal_servicio', {
+                    'event_category': 'Engagement',
+                    'event_label': card.id
+                });
+            }
+        });
+    });
+});
+
 // Añadir un efecto dinámico de iluminación en las tarjetas al pasar el cursor
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.pill-card');
