@@ -3,481 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combos Publicitarios - 360° Digital</title>
-    <style>
-        /* VARIABLES DE COLOR */
-        :root {
-            --bg-primary: #0d0d0d;
-            --bg-secondary: #1a1a1a;
-            --gold-primary: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #f3e0aa 0%, #d4af37 50%, #aa7c11 100%);
-            --text-light: #ffffff;
-            --text-muted: #b3b3b3;
-        }
-
-        /* GENERAL */
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-light);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* CABECERA HERO */
-        .landing-header {
-            text-align: center;
-            padding: 4rem 1.5rem 3rem 1.5rem;
-            background: radial-gradient(circle at top, #262112 0%, #0d0d0d 70%);
-        }
-
-        .landing-header .btn-cta {
-            margin-left: auto;
-            margin-right: auto;
-            display: inline-block;
-        }
-        .logo-container {
-            margin-bottom: 2rem;
-        }
-        .brand-logo {
-            font-size: 3rem;
-            font-weight: 900;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text; /* AGREGA ESTA LÍNEA */
-            -webkit-text-fill-color: transparent;
-            margin: 0;
-        }
-        .brand-sub {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 0.2rem;
-        }
-        .hero-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            max-width: 800px;
-            margin: 0 auto 1.5rem auto;
-            line-height: 1.3;
-        }
-        .hero-subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* MAIN CONTENT */
-        .landing-main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--gold-gradient);
-            margin: 0.7rem auto 0 auto;
-            border-radius: 2px;
-        }
-
-        /* CUADRÍCULA DE COMBOS */
-        .combos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
-        .combo-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 2.5rem 1.8rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .combo-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-primary);
-        }
-        .combo-card h3 {
-            font-size: 1.4rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-        .combo-details {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            flex-grow: 1;
-            margin-bottom: 1.5rem;
-        }
-        .price-tag {
-            font-size: 1.1rem;
-            margin-bottom: 1.8rem;
-            color: var(--text-light);
-        }
-        .price-tag span {
-            font-size: 2rem;
-            font-weight: 800;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text; /* AGREGA ESTA LÍNEA */
-            -webkit-text-fill-color: transparent;
-            display: block;
-            margin-top: 0.3rem;
-        }
-
-        /* BADGES DE DESTACADOS */
-        .badge-promo, .badge-premium {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0.3rem 1rem;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 20px;
-            letter-spacing: 1px;
-        }
-        .badge-promo { background: #e63946; color: white; }
-        .badge-premium { background: var(--gold-gradient); color: #000; }
-
-        .highlight-card {
-            border: 1px solid var(--gold-primary);
-            background: linear-gradient(180deg, #221c0b 0%, #1a1a1a 100%);
-        }
-
-        /* BOTONES CTA */
-        .btn-cta {
-            display: block;
-            background: var(--gold-gradient);
-            color: #000 !important;
-            text-decoration: none;
-            font-weight: 700;
-            padding: 0.9rem 1.5rem;
-            border-radius: 8px;
-            transition: opacity 0.2s ease, transform 0.1s ease;
-            cursor: pointer;
-        }
-        .btn-cta:hover {
-            opacity: 0.9;
-        }
-        .btn-cta:active {
-            transform: scale(0.98);
-        }
-
-        /* BANNER DE PÁGINAS WEB */
-        .web-banner {
-            background: linear-gradient(90deg, #121212 0%, #261f0a 100%);
-            border: 1px solid #3a3014;
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            margin-bottom: 5rem;
-            text-align: center;
-        }
-        .web-banner-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .web-banner h2 {
-            font-size: 1.8rem;
-            margin-top: 0;
-        }
-        .web-banner p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        .btn-web {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-        }
-
-        /* SECCIÓN PASOS DE COMPRA */
-        .steps-section {
-            padding: 0 0 5rem 0;
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1.75rem;
-        }
-
-        .step-item {
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(20,20,20,0.95) 0%, rgba(13,13,13,0.95) 100%);
-            border: 1px solid rgba(212,175,55,0.20);
-            border-radius: 16px;
-            padding: 2.2rem 1.6rem;
-            min-height: 240px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-            backdrop-filter: blur(6px);
-        }
-
-        .step-item::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: radial-gradient(circle at top, rgba(212,175,55,0.25) 0%, rgba(212,175,55,0.00) 55%);
-            pointer-events: none;
-        }
-
-        .step-item::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -40px;
-            width: 160px;
-            height: 160px;
-            transform: translateX(-50%);
-            background: radial-gradient(circle at center, rgba(212,175,55,0.35) 0%, rgba(212,175,55,0.00) 65%);
-            pointer-events: none;
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--gold-gradient);
-            color: #000;
-            font-weight: 900;
-            font-size: 1.25rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.1rem auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* FOOTER */
-        .landing-footer {
-            text-align: center;
-            padding: 3rem 1.5rem;
-            border-top: 1px solid #222;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        .landing-footer p { margin: 0.5rem 0; }
-
-        /* RESPONSIVE AJUSTES */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 1.7rem; }
-            .web-banner { padding: 2rem 1rem; }
-            .web-banner h2 { font-size: 1.4rem; }
-        }
-    </style>
+    <title>360° Digital - Soluciones Tecnológicas & Publicidad</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/Footer.css"
 </head>
 <body>
 
-    <div class="landing-container">
-        <!-- SECCIÓN 1: HERO / CABECERA -->
-        <header class="landing-header">
-            <div class="logo-container">
-                <div class="brand-logo">
-                    <img src="imagenes/web site.png" alt="Logo 360° Digital" style="width: 320px; height: auto; vertical-align: middle; margin-right: 0.5rem;">
-                </div>
-            </div>
-            <h1 class="hero-title">¡Dale una Imagen Profesional a tu Marca en su Próximo Evento o Lanzamiento!</h1>
-            <p class="hero-subtitle">
-                Combos publicitarios físicos y soluciones digitales a la medida de tu bolsillo. 
-                Diseños 100% personalizados y envíos a todo el país.
-            </p>
+    <!-- NAVEGACIÓN -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">360°<span>Digital</span></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+            </ul>
+            <a href="https://wa.me/573173562745" target="_blank" class="btn btn-nav">Cotizar Gratis →</a>
+        </div>
+    </header>
 
-            <button 
-                onclick="window.location.href='https://360-digital.vercel.app/'" 
-                class="btn-cta" 
-                style="margin-top: 2rem; font-size: 1.1rem; padding: 1rem 2rem; align-self: center;"
-            >
-                ir al sitio web
-            </button>
-        </header>
-
-        <!-- SECCIÓN 2: CUADRÍCULA DE COMBOS -->
-        <main class="landing-main">
-            <h2 class="section-title">Nuestros Combos Publicitarios</h2>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-tag">Servicios Profesionales</span>
+            <h1>Desarrollo de Software & <span>Marketing 360</span></h1>
+            <p>Diseño y layouts modernos para pymes, empresas y startups en el Valle y toda Colombia. Creamos plataformas escalables, rápidas y seguras.</p>
             
-            <div class="combos-grid">
-                <!-- Tarjeta 1 -->
-                <div class="combo-card">
-                    <span class="badge-promo">Más Vendido</span>
-                    <h3>Combo Araña + Pendón</h3>
-                    <img src="imagenes/araña 100.jpg" alt="Combo Araña + Pendón" style="width:100%; height:auto; margin-bottom: 1rem; border-radius: 8px;">
-                    <p class="combo-details">Pendón (0.60 x 1.60 mts) + Estructura portátil fácil de transportar + Diseño personalizado.</p>
-                    <div class="price-tag">Desde <span>$100.000</span></div>
-                    <a 
-                        href="https://wa.me/573187752351?text=Hola%20360%20Digital%2C%20quiero%20cotizar%20el%20Combo%20Ara%C3%B1a%20%2B%20Pend%C3%B3n%20de%20%24100.000" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="btn-cta" 
-                        data-combo="araña"
-                    >
-                        Pedir por WhatsApp
-                    </a>
+            <!-- Maqueta visual emulando la laptop de la referencia -->
+            <div class="mockup-container">
+                <div class="mockup-screen">
+                    <div class="screen-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    </div>
+                    <div class="screen-body">
+                    <h2>Plataformas Web & Automatización de Ventas</h2>
+                    <div class="stat-bar" style="background: linear-gradient(90deg, var(--brand-red), transparent); max-width: 300px; margin: 0 auto; padding: 8px; border-radius: 6px; font-weight: 700; font-size: 13px;">
+                        <i class="fa-solid fa-chart-line"></i> +98% de Impacto Comercial
+                    </div>
                 </div>
 
-                <!-- Tarjeta 2 -->
-                <div class="combo-card">
-                    <h3>Combo 1 (Ideal Stands)</h3>
-                    <img src="imagenes/Combo 1.jpg" alt="Combo 1" style="width:100%; height:auto; margin-bottom: 1rem; border-radius: 8px;">
-                    <p class="combo-details">1 Pendón (50x70 cm) + 1.000 Tarjetas de Presentación físicas de alta calidad.</p>
-                    <div class="price-tag"><span>$110.000</span></div>
-                    <a 
-                        href="https://wa.me/573187752351?text=Hola%20360%20Digital%2C%20me%20interesa%20el%20Combo%201%20de%20%24110.000%20%28Pend%C3%B3n%20%2B%20Tarjetas%29" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="btn-cta"
-                        data-combo="combo-1"
-                    >
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-
-                <!-- Tarjeta 3 -->
-                <div class="combo-card">
-                    <h3>Combo 2 (Empaques)</h3>
-                    <img src="imagenes/Combo 2.jpg" alt="Combo 2" style="width:100%; height:auto; margin-bottom: 1rem; border-radius: 8px;">
-                    <p class="combo-details">400 Stickers personalizados (3x3 cm) + 1.000 Tarjetas de Presentación para tus envíos.</p>
-                    <div class="price-tag"><span>$110.000</span></div>
-                    <a 
-                        href="https://wa.me/573187752351?text=Hola%20360%20Digital%2C%20me%20interesa%20el%20Combo%202%20de%20%24110.000%20%28Stickers%20%2B%20Tarjetas%29" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="btn-cta"
-                        data-combo="combo-2"
-                    >
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-
-                <!-- Tarjeta 4 -->
-                <div class="combo-card highlight-card">
-                    <span class="badge-premium">Premium</span>
-                    <h3>Combo 3 (Aviso + Tarjetas)</h3>
-                    <img src="imagenes/Combo 3.jpg" alt="Combo 3" style="width:100%; height:auto; margin-bottom: 1rem; border-radius: 8px;">
-                    <p class="combo-details">Espectacular Aviso redondo con luz Neón LED (apto interior/exterior) + Dilatadores + 1.000 Tarjetas.</p>
-                    <div class="price-tag"><span>$200.000</span></div>
-                    <a 
-                        href="https://wa.me/573187752351?text=Hola%20360%20Digital%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20del%20Combo%203%20de%20%24200.000%20%28Aviso%20Ne%C3%B3n%20%2B%20Tarjetas%29" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="btn-cta"
-                        data-combo="combo-3"
-                    >
-                        Pedir por WhatsApp
-                    </a>
-                </div>
-
-                <!-- Tarjeta 5: Páginas Web -->
-                <div class="combo-card">
-                    <h3>Diseño de Página Web</h3>
-                    <img src="imagenes/PAGINAS WEB.jpg" alt="Diseño de Página Web" style="width:100%; height:auto; margin-bottom: 1rem; border-radius: 8px;">
-                    <p class="combo-details">Creamos tu página web a medida, 100% adaptable a celulares (responsive), ultra rápida y lista para recibir pedidos.</p>
-                    <div class="price-tag"><span>Desde $350.000</span></div>
-                    <a 
-                        href="https://wa.me/573187752351?text=Hola%20360%20Digital%2C%20quiero%20asesor%C3%ADa%20para%20el%20Dise%C3%B1o%20de%20mi%20P%C3%A1gina%20Web" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="btn-cta"
-                        data-combo="web"
-                    >
-                        Solicitar Asesoría Web
-                    </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- SECCIÓN 3: PÁGINAS WEB (BANNER ANCHO) -->
-            <section class="web-banner">
-                <div class="web-banner-content">
-                    <h2>¿Quieres vender en automático las 24 horas del día?</h2>
-                    <img src="imagenes/3.png" alt="Diseño de Página Web" style="width:100%; max-width: 600px; height:auto; margin: 1.5rem auto; display:block; border-radius: 8px;">
-                    <p>Diseñamos tu página web a medida, 100% adaptable a celulares (responsive), ultra rápida y lista para recibir pedidos. El complemento digital perfecto para tu publicidad física.</p>
-                    <a 
-                        href="https://wa.me/573187752351?text=Hola%20360%20Digital%2C%20quiero%20asesor%C3%ADa%20para%20el%20Dise%C3%B1o%20de%20mi%20P%C3%A1gina%20Web%20a%20medida" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        class="btn-cta btn-web"
-                        data-combo="web"
-                    >
-                        Solicitar Asesoría Web Gratis
-                    </a>
-                </div>
-            </section>
+    <!-- PILARES DE SERVICIO (Los 4 bloques de la imagen - Edición 360° Digital) -->
+    <section class="services-pills" id="servicios">
+        <div class="container grid-pills">
+            
+        <!-- Bloque 1: Desarrollo de Software (Actualizado con ID de enrutamiento) -->
+        <div class="pill-card" id="btn-software">
+            <div class="pill-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Desarrollo Software</h3>
+        </div>
 
-            <!-- SECCIÓN 4: PROCESO DE COMPRA -->
-            <section class="steps-section">
-                <h2 class="section-title">¿Cómo es el proceso de compra?</h2>
-                <div class="steps-container">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <h4>Eliges y escribes</h4>
-                        <p>Escoges tu combo ideal y nos envías los detalles de tu marca por WhatsApp.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <h4>Abono del 50%</h4>
-                        <p>Confirmas tu pedido y nuestro equipo activa la propuesta de diseño personalizada.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <h4>Aprobación final</h4>
-                        <p>Revisas los bocetos. No mandamos a producción nada hasta que des tu visto bueno.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">4</div>
-                        <h4>Entrega y saldo</h4>
-                        <p>Despachamos tu pedido y cancelas el saldo restante contraentrega (Envío $18.000).</p>
-                    </div>
-                </div>
-            </section>
-        </main>
 
-        <footer class="landing-footer">
-            <p>© 2026 360° Digital. <br> Todos los derechos reservados.</p>
-            <p>Líneas de atención: 317 356 2745 – 318 775 2351</p>
-        </footer>
+        <!-- Bloque 2: SEO Local & Growth (Actualizado con ID de enrutamiento) -->
+        <div class="pill-card" id="btn-seo-maps">
+            <div class="pill-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>SEO & Growth</h3>
+        </div>
+
+
+            <!-- Bloque 3: Catálogo Web (Interactivo con ID de enrutamiento) -->
+            <div class="pill-card" id="btn-catalogo">
+                <div class="pill-icon"><i class="fa-solid fa-book-open"></i></div>
+                <h3>Catálogo Web</h3>
+            </div>
+
+                    <!-- Bloque 2: Trafficker & Performance (Pauta Avanzada y ROAS) -->
+            <div class="pill-card" id="btn-trafficker">
+                <div class="pill-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Trafficker & Ads</h3>
+            </div>
+
+            <!-- Bloque 4: Apps de Servicio & Menús (Aquí conectamos Dulzura Mía y EcoBiciGo) -->
+            <div class="pill-card" id="btn-apps-servicios">
+                <div class="pill-icon"><i class="fa-solid fa-bicycle"></i></div>
+                <h3>Apps de Servicio & Menús</h3>
+            </div>
+
+
+        <!-- Bloque 6: Soporte e Infraestructura Cloud (Actualizado con ID de enrutamiento) -->
+        <div class="pill-card" id="btn-soporte">
+            <div class="pill-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>Soporte 24/7</h3>
+        </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- CONTADOR DE MÉTRICAS -->
+    <section class="metrics-bar">
+        <div class="container grid-metrics">
+            <div class="metric-item"><strong>50+</strong><p>Proyectos</p></div>
+            <div class="metric-item"><strong>98%</strong><p>Satisfacción</p></div>
+            <div class="metric-item"><strong>24/7</strong><p>Soporte Técnico</p></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-container">
+        
+        <p class="footer-text">
+        Desarrollado por 
+        <a href="https://samdersson.netlify.app/" target="_blank" rel="noopener noreferrer" class="dev-link">
+            <strong>Samdersson Nuñez</strong>
+        </a> 
+        • 
+        <a href="https://360-digital.vercel.app/" target="_blank" rel="noopener noreferrer" class="dev-link">
+            <strong>360Digital</strong>
+        </a>
+        </p>
+        
+        <div class="footer-links">
+        <a href="https://360digital.netlify.app/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-dev-social btn-web">
+            <i class="fas fa-globe"></i> Sitio Web 360Digital
+        </a>
+
+        <a href="https://samdersson.netlify.app/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-dev-social btn-portfolio">
+            <i class="fas fa-user-code"></i> Portafolio desarrollador
+        </a>
+
+        <a href="https://www.instagram.com/360digital.co" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-dev-social btn-instagram">
+            <i class="fab fa-instagram"></i> @360digital.co
+        </a>
+
+        <a href="https://wa.me/573187752351?text=%C2%A1Hola%20360Digital!%20%F0%9F%90%9D%20Me%20interesa%20solicitar%20el%20desarrollo%20de%20un%20sitio%20web%20o%20cat%C3%A1logo%20virtual." 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-dev-social btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Solicitar Desarrollo
+        </a>
+        </div>
     </div>
+</footer>
+    
 
-    <!-- Botón Flotante de WhatsApp para conversión rápida -->
-    <a href="https://wa.me/573187752351?text=Hola%20360%20Digital,%20vengo%20de%20la%20landing%20y%20quiero%20cotizar%20un%20combo" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       style="position:fixed; width:60px; height:60px; bottom:20px; right:20px; background-color:#25d366; color:#FFF; border-radius:50%; text-align:center; box-shadow: 2px 2px 3px rgba(0,0,0,0.3); z-index:100; display:flex; align-items:center; justify-content:center; text-decoration:none;"
-    >
-       <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-       </svg>
-    </a>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        document.querySelectorAll('.btn-cta').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const comboName = this.getAttribute('data-combo');
-                console.log('Clic en el combo: ' + comboName);
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
