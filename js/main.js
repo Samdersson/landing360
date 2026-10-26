@@ -749,3 +749,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Infraestructura de Simulación de 360° Digital cargada.");
+
+    document.body.addEventListener('click', (e) => {
+        const targetBtn = e.target.closest('.btn-view');
+        
+        if (targetBtn) {
+            const originalUrl = targetBtn.getAttribute('href');
+            
+            // Interceptamos únicamente si detecta que intenta comunicarse por WhatsApp real
+            if (originalUrl && originalUrl.includes('wa.me')) {
+                e.preventDefault(); 
+                
+                const urlParams = new URL(originalUrl);
+                const textParam = urlParams.searchParams.get('text') || "Hola, solicito información de soluciones 360.";
+                
+                crearCelularVirtual(textParam);
+            }
+        }
+    });
+
+    function crearCelularVirtual(mensajeEstructurado) {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0'; overlay.style.left = '0';
+        overlay.style.width = '100%'; overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(11, 15, 25, 0.95)';
+        overlay.style.backdropFilter = 'blur(10px)';
+        overlay.style.display = 'flex'; overlay.style.justifyContent = 'center'; overlay.style.alignItems = 'center';
+        overlay.style.zIndex = '3000'; overlay.style.padding = '20px';
+
+        overlay.innerHTML = `
+            <div style="background: #151b2c; border: 1px solid #222b44; padding: 25px; border-radius: 16px; max-width: 400px; width: 100%; box-shadow: 0 0 35px rgba(255, 42, 75, 0.3);">
+                <div style="text-align: center; margin-bottom: 15px; border-bottom: 1px solid #222b44; padding-bottom: 10px;">
+                    <span style="color: #ff2a4b; font-size: 11px; font-weight: 700; text-transform: uppercase;">Entorno de Demostración</span>
+                    <h4 style="color: white; font-size: 16px; margin-top: 4px;"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> Reporte Técnico de Venta</h4>
+                </div>
+                <p style="color: #94a3b8; font-size: 13px; margin-bottom: 12px;">Así llega la orden de compra ya sumada y formateada al WhatsApp del negocio:</p>
+                <div style="background: #0b0f19; border: 1px solid #1e293b; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+                    <pre style="color: #25d366; font-family: monospace; font-size: 12px; white-space: pre-wrap; margin: 0;">${mensajeEstructurado}</pre>
+                </div>
+                <button id="cerrar-celular" style="background: #ff2a4b; color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: 700; cursor: pointer;">Volver al Portafolio</button>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+        document.getElementById('cerrar-celular').addEventListener('click', () => overlay.remove());
+    }
+});
