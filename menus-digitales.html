@@ -47,35 +47,60 @@
         </div>
     </header>
 
-    <!-- HERO SECTION ENFOCADO EN MENÚS -->
+    <!-- HERO SECTION ENFOCADO EN MENÚS CON DEMO VISUAL ARRIBA -->
     <section class="hero">
-        <div class="container hero-content">
-            <span class="hero-tag"><i class="fa-solid fa-utensils"></i> Software Gastro-Comercial</span>
-            <h1>Diseño y desarrollo de <br><span>cartas o menús WEB</span></h1>
-            <p><strong>Tu carta, ahora en el celular de tus clientes.</strong> <br> Creamos menús Digitales interactivos para restaurantes, cafeterías, reposterías y negocios gastronómicos.</p>
+        <div class="container hero-content" style="display: flex; flex-direction: column; align-items: center;">
+            
+            <!-- BADGE DE URGENCIA -->
+            <span class="badge-urgency"><i class="fa-solid fa-fire"></i> Digitaliza tu carta hoy sin comisiones</span>
+            
+            <!-- CONTENEDOR PRINCIPAL: TEXTO A LA IZQUIERDA / MOCKUP DEMO A LA DERECHA (O APILADOS) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; width: 100%; margin-top: 15px;">
+                
+                <!-- Columna de Texto y Llamados a la Acción -->
+                <div style="text-align: left;">
+                    <span class="hero-tag"><i class="fa-solid fa-utensils"></i> Software Gastro-Comercial</span>
+                    <h1 style="font-size: 38px; line-height: 1.2; margin: 15px 0;">Diseño y desarrollo de <br><span style="color: var(--brand-red);">cartas o menús WEB</span></h1>
+                    <p style="font-size: 16px; margin-bottom: 25px; color: var(--text-muted);">
+                        <strong>Tu carta, ahora en el celular de tus clientes.</strong> <br> Creamos menús Digitales interactivos para restaurantes, cafeterías, reposterías y negocios gastronómicos. Sin descargas ni intermediarios.
+                    </p>
 
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
-                <a href="https://wa.me/573187752351?text=%C2%A1Hola!%20Quiero%20cotizar%20un%20Men%C3%BA%20Digital%20para%20mi%20negocio." target="_blank" class="btn btn-nav" style="padding: 14px 28px; font-size: 16px;">
-                    <i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Solicitar Menú en WhatsApp
-                </a>
-                <a href="https://dulzuramia.netlify.app/" target="_blank" class="btn" style="background: var(--bg-dark-card); border: 1px solid var(--border-dark); color: white; padding: 14px 28px;">
-                    <i class="fa-solid fa-eye" style="margin-right: 8px; color: var(--brand-red);"></i> Ver Ejemplo en Vivo
-                </a>
-            </div>
-
-            <!-- MOCKUP VISUAL INTEGRADO -->
-            <div class="mockup-container">
-                <div class="screen-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                </div>
-                <div class="screen-body" style="padding: 40px 20px;">
-                    <span style="color: var(--brand-red); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">TECNOLOGÍA SINTETIZADA</span>
-                    <h2 style="font-size: 26px; margin: 10px 0 15px;">Centraliza tu atención sin pagar comisiones por pedido</h2>
-                    <div class="stat-bar" style="max-width: 450px;">
-                        <i class="fa-solid fa-qrcode"></i> Tu carta lista en Código QR y enlace directo
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
+                        <a href="https://wa.me/573187752351?text=%C2%A1Hola!%20Quiero%20cotizar%20un%20Men%C3%BA%20Digital%20para%20mi%20negocio." target="_blank" onclick="fbq('track', 'Lead');" class="btn btn-nav btn-glow-pulse" style="padding: 16px 28px; font-size: 15px;">
+                            <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 18px;"></i> Solicitar Menú en WhatsApp
+                        </a>
+                        <a href="https://dulzuramia.netlify.app/" target="_blank" class="btn" style="background: var(--bg-dark-card); border: 1px solid var(--border-dark); color: white; padding: 16px 24px;">
+                            <i class="fa-solid fa-eye" style="margin-right: 8px; color: var(--brand-red);"></i> Ver Demo Real
+                        </a>
                     </div>
                 </div>
+
+                <!-- Columna del Mockup Visual / Demostração Interactiva Arriba -->
+                <div style="background: var(--bg-dark-card); border: 2px solid var(--brand-red); padding: 15px; border-radius: 20px; text-align: center; box-shadow: 0 0 30px rgba(255, 42, 75, 0.2);">
+                    <div style="background: #000; border-radius: 14px; padding: 10px; border: 2px solid #333; position: relative; overflow: hidden;">
+                        <!-- Barra de estado simulada del celular -->
+                        <div style="display: flex; justify-content: space-between; color: #888; font-size: 11px; margin-bottom: 8px; padding: 0 10px;">
+                            <span>9:41</span>
+                            <span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-wifi"></i> <i class="fa-solid fa-battery-full"></i></span>
+                        </div>
+                        
+                        <!-- Pantalla interna con vista previa de Dulzura Mía -->
+                        <div style="background: #1a1a1a; height: 280px; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                            <img src="imagenes/dm.png" alt="Demo Dulzura Mía" style="width: 100%; height: 100%; object-fit: cover;">
+                            <!-- <div style="position: absolute; background: rgba(0,0,0,0.75); width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center;">
+                                <i class="fa-solid fa-utensils" style="font-size: 32px; color: var(--brand-red); margin-bottom: 8px;"></i>
+                                <h4 style="color: white; font-size: 15px; margin-bottom: 4px;">Dulzura Mía Repostería</h4>
+                                <p style="color: #ccc; font-size: 11.5px; margin-bottom: 12px;">Menú web activo con carrito y pedidos a WhatsApp</p>
+                                <a href="https://dulzuramia.netlify.app/" target="_blank" class="btn btn-nav" style="font-size: 11.5px; padding: 6px 14px;">
+                                    Probar Menú en Vivo ↗
+                                </a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </section>
 
